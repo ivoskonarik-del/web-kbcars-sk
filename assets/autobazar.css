@@ -1,0 +1,26 @@
+/* Spoločný základ všetkých šablón: lightbox, mapa, skrývanie, prístupnosť. Šablóny ho prepisujú vlastnými farbami. */
+[hidden] { display: none !important; }
+.lb { position: fixed; inset: 0; z-index: 1000; display: none; align-items: center; justify-content: center;
+  background: rgba(8, 8, 10, .94); }
+.lb.on { display: flex; }
+.lb img { max-width: min(92vw, 1600px); max-height: 86vh; object-fit: contain; border-radius: 4px; }
+.lb button { position: absolute; border: 0; background: none; color: #fff; font: 400 40px/1 system-ui, sans-serif;
+  width: 56px; height: 56px; cursor: pointer; opacity: .8; }
+.lb button:hover, .lb button:focus-visible { opacity: 1; }
+.lb-zavri { top: 16px; right: 16px; }
+.lb-pred { left: 16px; top: 50%; transform: translateY(-50%); }
+.lb-dalsia { right: 16px; top: 50%; transform: translateY(-50%); }
+.lb-pocet { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); color: #fff;
+  font: 500 14px/1 system-ui, sans-serif; opacity: .75; }
+iframe.mapa { display: block; width: 100%; border: 0; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+/* Online poistenie (kalkulačka zo starého webu predajcu), spoločné pre premium/salon/noir; showroom má vlastné. */
+.poist-hlava { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; }
+.poist-hlava h2 { margin: 0; }
+.poist-nove, .poist-odkaz { color: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.poist-lead { max-width: 62ch; margin: 12px 0 0; opacity: .8; }
+.poist-ram { display: block; width: 100%; height: 960px; margin-top: 32px; border: 1px solid rgba(127,127,127,.3);
+  border-radius: 8px; background: #fff; }
+.poist-odkaz { display: inline-block; margin-top: 16px; }
+@media (max-width: 640px) { .poist-ram { height: 1200px; } }

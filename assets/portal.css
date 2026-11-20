@@ -1,0 +1,158 @@
+/* Šablóna portal (16. 10.): salon.css + čistý svetlý portál. Jedno písmo (Inter), žiadne tmavé pásy okrem pätičky. */
+:root { --f-nadpis: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; --bg: #F5F7FA; }
+body.portal { background: var(--bg); }
+.portal h1, .portal h2, .portal h3 { letter-spacing: -0.02em; }
+.portal h1 { font-weight: 800; }
+.portal h2 { font-weight: 750; }
+
+/* horná lišta svetlá */
+.portal .lista { background: #fff; color: var(--muted); border-bottom: 1px solid var(--line); }
+.portal .lista a:hover { color: var(--ink); }
+.portal .lista .ik { color: var(--ak-ink); }
+.portal .lista-nav { color: var(--ink); }
+
+/* hlavička: telefón + obhliadka */
+.pt-cta { display: flex; align-items: center; gap: 12px; }
+.pt-tel { font-weight: 700; white-space: nowrap; }
+.pt-tel .ik { color: var(--ak-ink); }
+.pt-tel-mob { display: none; place-items: center; width: 44px; height: 44px; border-radius: 999px; background: var(--ak); color: var(--ak-t); margin-left: auto; }
+@media (max-width: 1240px) { .pt-tel span { display: none; } .pt-tel { padding: 0 12px; } }
+@media (max-width: 960px) { .pt-cta { margin-left: auto; } }
+@media (max-width: 640px) { .pt-cta { display: none; } .pt-tel-mob { display: grid; } .portal .menu-btn { margin-left: 4px; } }
+
+/* karty áut: biele, fotka 4:3, výrazná cena */
+.portal .karta { background: #fff; border: 1px solid var(--line); border-radius: var(--r-m); box-shadow: var(--tien); overflow: hidden; }
+.portal .karta:hover { box-shadow: var(--tien-2); }
+.portal .karta img { aspect-ratio: 4 / 3; object-fit: cover; }
+
+/* financovanie a ostatné tmavé pásy na svetlo */
+.portal .financ { background: #fff; color: var(--text); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.portal .financ h2 { color: var(--ink); }
+.portal .financ-body li { color: var(--ink); }
+.portal .financ-body .ik { color: var(--ak-ink); }
+.portal .financ-auta a { background: var(--bg); color: var(--ink); border: 1px solid var(--line); }
+.portal .financ-auta a:hover { background: #fff; border-color: var(--line-2); }
+.portal .financ-auta small { color: var(--muted); }
+.portal .financ .btn-obrys-svetly { color: var(--ink); border-color: var(--line-2); }
+
+/* mapa po kliknutí */
+.pt-mapa { position: relative; height: 100%; min-height: 360px; border-radius: var(--r-m); overflow: hidden;
+  background: #E9EEF3 repeating-linear-gradient(35deg, transparent 0 46px, rgba(255,255,255,.7) 46px 52px),
+  repeating-linear-gradient(-55deg, transparent 0 70px, rgba(255,255,255,.55) 70px 76px); display: grid; place-items: center; }
+.pt-mapa-obsah { display: grid; justify-items: center; gap: 12px; text-align: center; background: #fff; padding: 24px 32px;
+  border-radius: var(--r-m); box-shadow: var(--tien-2); max-width: 90%; }
+.pt-mapa-obsah .ik { color: var(--ak-ink); }
+.pt-mapa-obsah p { margin: 0; color: var(--ink); }
+.pt-mapa-obsah small { color: var(--muted); }
+.pt-mapa iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.kontakt-mapa-cela .pt-mapa { border-radius: 0; min-height: 420px; }
+
+/* mobilná spodná lišta Zavolať / Mám záujem */
+.pt-spodok { display: none; }
+@media (max-width: 960px) {
+  .pt-spodok { position: fixed; left: 0; right: 0; bottom: 0; z-index: 70; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr;
+    gap: 8px; padding: 8px 12px; background: #fff; border-top: 1px solid var(--line); box-shadow: 0 -4px 16px rgba(14,26,43,.08); }
+  .pt-spodok a { display: flex; align-items: center; justify-content: center; gap: 8px; height: 48px; border-radius: var(--r-s);
+    font-weight: 700; text-decoration: none; }
+  .pt-sp-tel { background: var(--ak); color: var(--ak-t); }
+  .pt-sp-ak { background: #fff; color: var(--ink); border: 1px solid var(--line-2); }
+  body.portal { padding-bottom: 136px !important; }
+  body:has(.det-lista) .pt-spodok { display: none; }
+}
+
+/* podstránky: svetlá hlavička bez fotky */
+.pt-podhero { background: #fff; border-bottom: 1px solid var(--line); padding: 32px 0 40px; }
+.pt-podhero .drobceky { margin-bottom: 16px; }
+.pt-podhero h1 { color: var(--ink); font-size: clamp(30px, 3.4vw, 46px); line-height: 1.08; max-width: 22ch; text-wrap: balance; }
+.pt-podhero p { max-width: 60ch; margin-top: 12px; font-size: 18px; color: var(--muted); }
+.pt-podhero .btn { margin-top: 24px; }
+.pt-podhero.podhero-nizke { min-height: 0; }
+
+/* ================= v2 ================= */
+/* karty: výrazná cena, porovnať, detail */
+.portal .karta-cena strong { font-size: 24px; font-weight: 800; color: var(--ak-ink); letter-spacing: -0.02em; }
+.portal .karta-telo { display: flex; flex-direction: column; }
+.portal .karta-cena { margin-top: auto; }
+.pt-porovnaj { position: relative; z-index: 2; display: inline-flex; align-items: center; gap: 8px; min-height: 36px; margin: 4px 0 8px;
+  font-size: 14px; font-weight: 600; color: var(--muted); cursor: pointer; user-select: none; }
+.pt-porovnaj input { width: 18px; height: 18px; accent-color: var(--ak); margin: 0; }
+.pt-porovnaj.on { color: var(--ak-ink); }
+.pt-porovnaj:has(input:disabled) { opacity: .45; cursor: not-allowed; }
+.pt-detail { display: none; }
+.pt-porovnaj-det { margin: 12px 0 0; }
+/* plávajúca lišta porovnania */
+.pt-porov-lista { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(var(--wh-lista, 60px) + 16px); z-index: 80;
+  display: flex; align-items: center; gap: 12px; background: #fff; border: 1px solid var(--line); border-radius: 999px;
+  padding: 8px 8px 8px 20px; box-shadow: 0 8px 32px rgba(14,26,43,.18); font-weight: 600; color: var(--ink); max-width: calc(100% - 24px); }
+.pt-porov-lista[hidden] { display: none; }
+.pt-porov-lista .btn { min-height: 40px; padding: 0 16px; border-radius: 999px; }
+.pt-porov-lista .vypnute { pointer-events: none; opacity: .5; }
+@media (max-width: 960px) { .pt-porov-lista { bottom: calc(var(--wh-lista, 52px) + 76px); font-size: 14px; padding-left: 14px; gap: 8px; }
+  .pt-porov-lista [data-porov-pocet] { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } }
+/* porovnávacia tabuľka */
+.pt-porov-prazdne { color: var(--muted); margin: 0 0 16px; }
+.pt-porov-tab { background: #fff; border: 1px solid var(--line); border-radius: var(--r-m); box-shadow: var(--tien); overflow: hidden; }
+.pt-pr { display: grid; grid-template-columns: 200px repeat(var(--n), minmax(0, 1fr)); border-top: 1px solid var(--line); }
+.pt-pr:first-child { border-top: 0; }
+.pt-pr:nth-child(even) { background: #FAFBFC; }
+.pt-ps { padding: 12px 16px; font-weight: 600; color: var(--muted); font-size: 14px; }
+.pt-pc { padding: 12px 16px; color: var(--ink); font-variant-numeric: tabular-nums; min-width: 0; overflow-wrap: anywhere; }
+.pt-pr-hlava .pt-pc a { display: grid; gap: 8px; text-decoration: none; color: var(--ink); }
+.pt-pr-hlava img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--r-s); }
+.pt-pc-cena { margin: 8px 0 4px; font-size: 22px; font-weight: 800; color: var(--ink); }
+.pt-pc-cena.najnizsia { color: #0F7B3F; }
+.pt-pc-cena.najnizsia::after { content: " najnižšia"; font-size: 12px; font-weight: 700; vertical-align: 3px; }
+.pt-pc-zrus { background: none; border: 0; color: var(--muted); text-decoration: underline; cursor: pointer; padding: 4px 0; font: inherit; font-size: 14px; }
+@media (max-width: 720px) {
+  .pt-pr { grid-template-columns: repeat(var(--n), minmax(0, 1fr)); }
+  .pt-ps { grid-column: 1 / -1; padding: 10px 12px 0; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+  .pt-pr-hlava > div:first-child { display: none; }
+  .pt-pc { padding: 6px 12px 10px; font-size: 14px; }
+  .pt-pc-cena { font-size: 18px; }
+  .pt-pc .btn { padding: 0 10px; font-size: 14px; min-height: 40px; }
+}
+/* detail: kľúčové údaje, tabuľka, výbava v skupinách, počítadlo fotiek */
+.pt-fakty { list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.pt-fakty li { display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto; column-gap: 10px; align-items: center;
+  background: #fff; border: 1px solid var(--line); border-radius: var(--r-s); padding: 10px 14px; min-width: 132px; }
+.pt-fakty .ik { grid-row: span 2; color: var(--ak-ink); }
+.pt-fakty span { font-size: 12px; color: var(--muted); }
+.pt-fakty b { font-size: 15px; color: var(--ink); white-space: nowrap; }
+.pt-tab { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--line); border-radius: var(--r-m); overflow: hidden; }
+.pt-tab th, .pt-tab td { text-align: left; padding: 12px 16px; border-top: 1px solid var(--line); font-size: 15px; vertical-align: top; }
+.pt-tab tr:first-child th, .pt-tab tr:first-child td { border-top: 0; }
+.pt-tab th { width: 42%; font-weight: 500; color: var(--muted); }
+.pt-tab td { font-weight: 650; color: var(--ink); overflow-wrap: anywhere; }
+.pt-tab tr:nth-child(even) { background: #FAFBFC; }
+.pt-vybava { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+.pt-vyb-sk { background: #fff; border: 1px solid var(--line); border-radius: var(--r-m); padding: 16px 18px; }
+.pt-vyb-sk h3 { font-size: 16px; margin: 0 0 10px; color: var(--ink); }
+.pt-vyb-sk h3 span { font-size: 13px; color: var(--muted); font-weight: 600; margin-left: 4px; }
+.pt-vyb-sk ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.pt-vyb-sk li { display: flex; gap: 8px; align-items: flex-start; font-size: 15px; color: var(--text); }
+.pt-vyb-sk .ik { color: #0F7B3F; flex: none; margin-top: 3px; }
+.pt-g-pocet { position: absolute; left: 12px; bottom: 12px; z-index: 3; background: rgba(14,26,43,.72); color: #fff; font-size: 13px;
+  font-weight: 700; padding: 4px 10px; border-radius: 999px; font-variant-numeric: tabular-nums; pointer-events: none; }
+.portal .det-cena { font-size: 40px; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); }
+.portal .det-lista { gap: 8px; }
+.pt-det-tel { width: 48px; padding: 0 !important; flex: none; }
+.portal .det-lista > div { margin-right: auto; }
+@media (max-width: 720px) { .pt-pr > div:empty { display: none; } }
+.portal img.pt-foto-namiesto-vyrezu { width: 100%; height: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--r-s); filter: none; transform: none; }
+.portal .fin-obr, .portal .financ-auta a span:first-child { overflow: hidden; border-radius: var(--r-s); }
+.portal .preco-foto { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.portal .preco-foto figure { margin: 0; border-radius: var(--r-m); overflow: hidden; }
+.portal .preco-foto figure:first-child { grid-column: 1 / -1; }
+.portal .preco-foto img { width: 100%; height: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+.portal .det-hlava:has(.pt-fakty) .det-sub { display: none; }
+@media (max-width: 640px) {
+  .pt-fakty { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin-top: 12px; }
+  .pt-fakty li { display: block; min-width: 0; padding: 8px 10px; }
+  .pt-fakty .ik { display: none; }
+  .pt-fakty span { display: block; font-size: 11px; }
+  .pt-fakty b { display: block; font-size: 14px; white-space: normal; }
+  .portal .det-hlava h1 { font-size: 24px; }
+}
+/* 18. 11. 2026: Možný odpočet DPH pri cene (pole odpocet_dph) */
+.portal .karta-dph { display: block; width: 100%; font-size: 13px; font-weight: 600; color: var(--muted, #5b6472); margin-top: 2px; }
+.portal .det-dph { font-size: 15px; font-weight: 600; color: var(--muted, #5b6472); margin-top: 4px; }
