@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="sk"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow"><meta name="referrer" content="no-referrer">
+<title>Správa áut | KB Cars</title>
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="../assets/fonty-salon.css">
+<link rel="stylesheet" href="../assets/admin-auta.css">
+<style>:root{--ak:#8e7205}</style>
+</head><body class="aa" data-api="https://webhunter-auta-api.prodej-bytu-3-1-70-m2-172175436.workers.dev" data-site="kb-cars" data-nazov="KB Cars">
+<noscript><p class="aa-noscript">Správa áut potrebuje zapnutý JavaScript.</p></noscript>
+<section class="aa-login" id="login" hidden>
+  <form class="aa-login__karta" id="login-form" novalidate>
+    <div class="aa-login__znak"><img class="aa-logo" src="../fotky/logo.webp" alt=""><span>KB Cars</span></div>
+    <h1>Správa áut</h1>
+    <label class="aa-pole"><span>Heslo</span>
+      <input type="password" id="heslo" name="heslo" autocomplete="current-password" required></label>
+    <p class="aa-chyba" id="login-chyba" role="alert" hidden></p>
+    <button class="aa-tl aa-tl--hlavne aa-tl--siroke" type="submit" id="login-tl">Prihlásiť sa</button>
+    <a class="aa-spat" href="../">Späť na web</a>
+  </form>
+</section>
+<div class="aa-app" id="app" hidden>
+  <header class="aa-hlavicka"><div class="aa-hlavicka__in">
+    <a class="aa-znacka" href="../" target="_blank" rel="noopener" title="Otvoriť web"><img class="aa-logo" src="../fotky/logo.webp" alt=""><span>KB Cars</span></a>
+    <a class="aa-tl aa-tl--jemne" href="../" target="_blank" rel="noopener" data-ik="web">Web</a>
+    <button class="aa-tl aa-tl--jemne" type="button" id="odhlasit">Odhlásiť</button>
+  </div></header>
+  <main class="aa-obsah" id="obsah"></main>
+  <div class="aa-toast" id="toast" role="status" aria-live="polite" hidden></div>
+</div>
+<script src="../assets/admin-auta.js" defer></script>
+</body></html>
